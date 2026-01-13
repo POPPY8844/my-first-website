@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEK GRAPHICS | Graphic Designer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7c3aed;
+      --secondary: #22d3ee;
+      --dark: #0f172a;
+      --light: #f8fafc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #020617);
+      color: var(--light);
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(2,6,23,0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+    }
+
+    nav h1 { color: var(--secondary); font-weight: 700; letter-spacing: 1px; }
+
+    /* HAMBURGER */
+    .menu-btn {
+      width: 35px; height: 25px; cursor: pointer; display: none; flex-direction: column; justify-content: space-between;
+    }
+    .menu-btn span { height: 4px; background: var(--light); border-radius: 5px; }
+
+    /* MENU */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a { color: var(--light); text-decoration: none; font-weight: 500; transition: 0.3s; }
+    nav a:hover { color: var(--secondary); }
+
+    /* MOBILE SLIDE MENU */
+    @media (max-width: 800px) {
+      .menu-btn { display: flex; }
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 250px;
+        height: 100vh;
+        background: #020617;
+        flex-direction: column;
+        padding-top: 100px;
+        align-items: center;
+        transition: 0.4s;
+      }
+      nav ul.show { right: 0; }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+    }
+
+    .hero h2 { font-size: 3rem; line-height: 1.2; }
+    .hero span { color: var(--secondary); }
+    .hero p { max-width: 600px; margin: 20px auto; opacity: 0.85; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(34,211,238,0.4); }
+
+    section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    section h3 { text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: var(--secondary); }
+
+    /* ABOUT */
+    .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 40px; align-items: center; }
+    .about img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .about p { line-height: 1.7; opacity: 0.9; }
+
+    /* SERVICES */
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 25px; }
+    .service-card {
+      background: linear-gradient(180deg, #020617, #020617) padding-box,
+                  linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+      border: 1px solid transparent; border-radius: 20px; padding: 30px; transition: 0.3s;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-card h4 { margin-bottom: 10px; color: var(--secondary); }
+
+    /* PORTFOLIO */
+    .portfolio { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; }
+    .portfolio img { width: 100%; border-radius: 15px; transition: 0.3s; cursor: pointer; }
+    .portfolio img:hover { transform: scale(1.05); }
+
+    /* CONTACT */
+    .contact-form { max-width: 600px; margin: auto; display: grid; gap: 15px; }
+    .contact-form input, .contact-form textarea { padding: 14px; border-radius: 10px; border: none; outline: none; }
+
+    footer { text-align: center; padding: 25px; background: #020617; opacity: 0.8; }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      .hero h2 { font-size: 2.2rem; }
+      section { padding: 60px 16px; }
+    }
+
+    @media (max-width: 768px) {
+      nav h1 { font-size: 1.1rem; }
+      .hero h2 { font-size: 1.8rem; }
+      .hero p { font-size: 0.95rem; }
+      section h3 { font-size: 1.6rem; }
+      .service-card { padding: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 { font-size: 1.4rem; }
+      .btn { padding: 10px 22px; font-size: 0.9rem; }
+      .about { gap: 20px; }
+      .portfolio { grid-template-columns: repeat(2,1fr); }
+    }
+
+    /* ANIMATION */
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: 1s; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+  
+    /* ===== EXTRA FEATURES ===== */
+
+    /* Animated background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(124,58,237,0.15), transparent 40%),
+                  radial-gradient(circle at 80% 30%, rgba(34,211,238,0.15), transparent 40%),
+                  radial-gradient(circle at 50% 80%, rgba(124,58,237,0.12), transparent 40%);
+      z-index: -1;
+      animation: floatBg 15s linear infinite alternate;
+    }
+
+    @keyframes floatBg {
+      from { transform: translateY(0); }
+      to { transform: translateY(-60px); }
+    }
+
+    /* Dark / Light mode */
+    body.light {
+      background: #f1f5f9;
+      color: #020617;
+    }
+
+    body.light header { background: rgba(255,255,255,0.8); }
+    body.light .service-card { background: #fff; color: #020617; }
+
+    .theme-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 90px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2000;
+    }
+
+    /* WhatsApp button */
+    .whatsapp-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 50%;
+      font-size: 20px;
+      text-decoration: none;
+      z-index: 2000;
+    }
+
+    /* Portfolio popup */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+    }
+
+    /* Bottom mobile nav */
+    .bottom-nav {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(2,6,23,0.9);
+        justify-content: space-around;
+        padding: 10px 0;
+        z-index: 1500;
+      }
+      .bottom-nav a { color: #fff; text-decoration: none; font-size: 14px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <h1>VEK GRAPHICS</h1>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul id="menu">
+      <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+      <li><a href="#portfolio" onclick="toggleMenu()">Portfolio</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="fade-in">
+    <h2>Welcome to <span>VEK GRAPHICS</span><br>Creative Design Studio</h2>
+    <p>Logos, branding, social media designs and beautiful visuals that grow your brand and attract customers.</p>
+    <a href="#contact" class="btn">Hire Me</a>
+  </div>
+</section>
+
+<section id="about">
+  <h3>About Me</h3>
+  <div class="about fade-in">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Designer">
+    <p>
+      I am a creative graphic designer with passion for clean, modern and powerful visual communication.
+      I help brands stand out using professional design strategies, typography and color psychology.
+      My goal is to turn your ideas into designs that speak and sell.
+    </p>
+  </div>
+</section>
+
+<section id="services">
+  <h3>My Services</h3>
+  <div class="services fade-in">
+    <div class="service-card">
+      <h4>Logo Design</h4>
+      <p>Unique and professional logos that represent your brand identity.</p>
+    </div>
+    <div class="service-card">
+      <h4>Brand Identity</h4>
+      <p>Complete branding packages including colors, fonts and guidelines.</p>
+    </div>
+    <div class="service-card">
+      <h4>Social Media Design</h4>
+      <p>Eye‑catching posts, ads and banners for your online platforms.</p>
+    </div>
+    <div class="service-card">
+      <h4>Flyers & Posters</h4>
+      <p>High‑quality promotional designs for events and businesses.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h3>My Portfolio</h3>
+  <div class="portfolio fade-in">
+    <img src="web1.jpg">
+    <img src="web2.jpg">
+    <img src="web3.jpg">
+    <img src="web4.jpg">
+  </div>
+</section>
+
+<section id="contact">
+  <h3>Contact Me</h3>
+  <form class="contact-form fade-in" onsubmit="sendMessage(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button class="btn">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 VEK GRAPHICS. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('show'); }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Mobile menu toggle
+  function toggleMenu(){
+    document.getElementById('menu').classList.toggle('show');
+  }
+
+  // Fake form submit
+  function sendMessage(e){
+    e.preventDefault();
+    alert('Message sent successfully!');
+  }
+</script>
+
+
+
+<!-- WHATSAPP -->
+<a class="whatsapp-btn" href="https://wa.me/2348148953237" target="_blank">💬</a>
+
+
+
+<!-- PORTFOLIO POPUP -->
+<div class="popup" id="popup" onclick="closePopup()">
+  <img id="popupImg">
+</div>
+
+<!-- BOTTOM MOBILE NAV -->
+<div class="bottom-nav">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Work</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<script>
+  // Theme toggle
+  function toggleTheme(){
+    document.body.classList.toggle('light');
+  }
+
+  // Portfolio popup
+  document.querySelectorAll('.portfolio img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('popupImg').src = img.src;
+      document.getElementById('popup').style.display = 'flex';
+    });
+  });
+
+  function closePopup(){
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
